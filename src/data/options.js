@@ -1,4 +1,5 @@
 export const departmentOptions = [
+  { value: 'web', label: 'Web 开发' },
   { value: 'client', label: '客户端开发' },
   { value: 'server', label: '服务端开发' },
   { value: 'engine', label: '引擎/图形' },

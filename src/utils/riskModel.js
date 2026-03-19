@@ -3,6 +3,7 @@ const sigmoid = (x) => 1 / (1 + Math.exp(-x))
 
 const riskDictionary = {
   department: {
+    web: 2,
     client: 1,
     server: -2,
     engine: -4,
@@ -78,18 +79,18 @@ const factorLabels = {
 
 function scoreSalary(salary) {
   if (salary <= 20) return 0
-  if (salary <= 35) return 1
-  if (salary <= 50) return 2
-  if (salary <= 80) return 5
-  return 8
+  if (salary <= 35) return 2
+  if (salary <= 50) return 4
+  if (salary <= 80) return 8
+  return 12
 }
 
 function scoreTenure(years) {
-  if (years < 1) return 6
-  if (years < 3) return 3
-  if (years < 6) return -4
-  if (years < 10) return 0
-  return 4
+  if (years < 1) return 7
+  if (years < 3) return 4
+  if (years < 6) return -5
+  if (years <= 8) return 0
+  return 16
 }
 
 function scoreTeamSize(teamSize) {
@@ -108,6 +109,10 @@ function makeReason(label, delta) {
 }
 
 export function calculateRisk(profile) {
+  const tenureYears = Number(profile.tenure) || 0
+  const tenureRawDelta = scoreTenure(tenureYears)
+  const tenureDelta = tenureYears > 8 ? 20 : tenureRawDelta
+
   const breakdown = [
     {
       key: 'department',
@@ -132,7 +137,7 @@ export function calculateRisk(profile) {
     {
       key: 'tenure',
       label: factorLabels.tenure,
-      delta: scoreTenure(profile.tenure)
+      delta: tenureDelta
     },
     {
       key: 'projectStage',
@@ -167,7 +172,7 @@ export function calculateRisk(profile) {
   ]
 
   const weightedImpact = breakdown.reduce((sum, item) => sum + item.delta, 0)
-  const probability = sigmoid((weightedImpact - 4) / 6.5)
+  const probability = sigmoid((weightedImpact - 4) / 8.5)
   const score = clamp(Math.round(probability * 100), 5, 95)
 
   let level = '低'
