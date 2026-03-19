@@ -104,7 +104,7 @@ onMounted(() => {
     <main class="app-grid">
       <section class="hero card">
         <div class="hero-copy">
-          <p class="eyebrow">Vue 3 裁员风险模拟器</p>
+          <p class="eyebrow">听说你会写代码?</p>
           <h1>根据岗位、绩效与业务状态，推测员工在大陆游戏公司中的被裁可能性</h1>
           <p class="hero-text">
             场景限定为中国大陆 IT 公司，主营游戏开发、推广与发行。模型采用启发式权重，只用于内部讨论与演示，不代表真实 HR 决策。
