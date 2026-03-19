@@ -246,12 +246,28 @@ select {
   box-shadow: inset 0 0 0 1px rgba(255, 124, 104, 0.18);
 }
 
+.score-block[data-tone='danger'] .score-value {
+  color: var(--danger);
+}
+
 .score-block[data-tone='warning'] {
   box-shadow: inset 0 0 0 1px rgba(247, 194, 97, 0.18);
 }
 
+.score-block[data-tone='warning'] .score-value {
+  color: var(--warning);
+}
+
+.score-block[data-tone='neutral'] .score-value {
+  color: var(--strong-text);
+}
+
 .score-block[data-tone='safe'] {
   box-shadow: inset 0 0 0 1px rgba(130, 215, 167, 0.18);
+}
+
+.score-block[data-tone='safe'] .score-value {
+  color: var(--safe);
 }
 
 .score-caption {

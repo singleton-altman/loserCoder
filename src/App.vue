@@ -83,6 +83,7 @@ const scoreLabel = computed(() => `${result.value.score}%`)
 const scoreTone = computed(() => {
   if (result.value.score >= 75) return 'danger'
   if (result.value.score >= 52) return 'warning'
+  if (result.value.score >= 28) return 'neutral'
   return 'safe'
 })
 
